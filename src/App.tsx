@@ -1,28 +1,39 @@
-import { Sidebar, SidebarItem }  from './components/sidebar'
-import { CounterButton } from '@aquinoconsultoria/storefront'
+import { ComponentProps } from 'react';
+import { Box, BoxComponent} from './components/Box/Box';
+import DragContainer from './components/DragContainer/DragContainer';
+import { Sidebar, SidebarItem }  from './components/Sidebar';
+import LayoutContextProvider from './context/LayoutContext';
+import { createComponent } from './utils/createComponent'
+
+
+const components: ComponentProps<any>[] = [
+  {
+    key: `${new Date().getTime()}`,
+    as: 'h1',
+    component: "Box",
+  },
+
+]
 function App() {
+
   return (
-    <div className="h-screen w-screen bg-amber-50 flex">
-      <Sidebar>
-        <SidebarItem />
+    <LayoutContextProvider>
+        <div className="h-screen w-screen flex">
+        <Sidebar>
+          <SidebarItem>  
+            { components.map(component => {
 
-      </Sidebar>
-      <div className="w-screen h-full p-2">
-
-        <CounterButton 
-        label="This is a button"
-        style={{ 
-          outline: 0, border: '1px solid #24b5d0', 
-          backgroundColor: '#24b5d0', 
-          color: '#fff',
-          fontSize: '16px',
-          borderRadius:'4px',
-          padding: '10px',
-          lineHeight: '1.5em',
-        }} 
-        ></CounterButton>
+              const Component = createComponent<typeof component.as>(component);
+              return <Component key={component.key} />
+            })}
+          </SidebarItem>
+        </Sidebar>
+        <DragContainer>
+        <Box as="section">Box With As</Box>
+        <BoxComponent as="main">Box Component With As</BoxComponent>
+        </DragContainer>
       </div>
-    </div>
+    </LayoutContextProvider>
   )
 }
 

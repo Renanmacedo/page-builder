@@ -1,7 +1,8 @@
-export function SidebarItem() {
+import {PropsWithChildren} from "react"
+export function SidebarItem({ children }: PropsWithChildren) {
     return (
         <div className="p-2">
-            <p className="text-sm">Button</p>
+            {children}
         </div>
     )
 }

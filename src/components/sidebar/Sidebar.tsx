@@ -4,7 +4,7 @@ type SidebarProps = {
 } 
 export function Sidebar({ children } : SidebarProps) {
     return (
-        <div className="h-full w-80 bg-purple-400 p-5">
+        <div className="h-full w-80  p-5">
             {children}
         </div>
     )
