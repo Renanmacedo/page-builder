@@ -1,8 +1,8 @@
 export type TabsProps  = {
-    onTabChange?: () => any;
-    currentIndex?: number;
-    orientation?: string;
-    changeOrintation?: () => void;
+    onSelection: (props: any) => void;
+    currentIndex: number;
+    defaultValue: string;
+    orientation: string;
 }
 
-export type TabReturnType = ReturnType<() => TabsProps> & { hasChange: boolean;};
+export type TabReturnType = Partial<TabsProps>

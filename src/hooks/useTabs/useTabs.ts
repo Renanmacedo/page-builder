@@ -1,32 +1,23 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { TabsProps, TabReturnType } from './useTabs.type';
 
 const useTabs = ( props: TabsProps): TabReturnType => {
     
-    const [currentIndexTab, setCurrentIndexTab] = useState<number>(0);
-    const [orientation, setOrientation] = useState<string>('horizontal');
+    const { orientation: originalOrientation, defaultValue} = props
 
-    const [hasChange, setHasChange] = useState(false);
-
-    const changeOrintation = () => {
-        setOrientation(props.orientation || '');
-    }
-    const onTabChange = () => {
-
-        if(props.currentIndex !== currentIndexTab) {
-            setCurrentIndexTab(currentIndexTab)
-            setHasChange(true)
+    const [currentValue, setCurrentValue] = useState<string>(defaultValue);
+    const onSelection = useCallback((newValue: string) => {
+        if(currentValue && currentValue !== newValue) {
+            setCurrentValue(newValue)
         }
-    }
+    }, [currentValue])
 
     const tabsContextValue = useMemo(() => ({ 
-        onTabChange,
-        currentIndex: currentIndexTab,
-        orientation,
-        changeOrintation,
-        hasChange
-    }), [currentIndexTab, orientation, hasChange,onTabChange,changeOrintation]);
+        onSelection,
+        orientation: originalOrientation,
+        defaultValue: currentValue
+    }), [ originalOrientation, onSelection, currentValue]);
 
     return tabsContextValue;
     

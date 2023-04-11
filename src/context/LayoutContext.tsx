@@ -1,4 +1,4 @@
-import {createContext, FunctionComponent, useState } from 'react'
+import {createContext, FunctionComponent, useCallback, useMemo, useState } from 'react'
 
 type PositionLayout =  "left" | "right";
 type LayoutContextProps ={ 
@@ -12,11 +12,11 @@ const LayoutContextProvider: FunctionComponent<any> = ({ children }) => {
 
     const [layoutPosition, setLayoutPosition] = useState<PositionLayout>('left');
 
-    const changePosition = (position: PositionLayout) => {
+    const changePosition = useCallback( () => (position: PositionLayout) => {
         setLayoutPosition(position);
-    }
+    }, [layoutPosition])
     return (
-        <LayoutContext.Provider value={{ layoutPosition, changePosition }}>
+        <LayoutContext.Provider value={{layoutPosition, changePosition }}>
             { children }
         </LayoutContext.Provider>
     )

@@ -1,6 +1,5 @@
 
 import  { HTMLPageBuildProps } from '../../types/types'
-import { createComponent } from '../../utils/createComponent';
 import { forwardRef } from '../../utils/forwardRef';
 
 const DEFAULT_TAG = 'div';

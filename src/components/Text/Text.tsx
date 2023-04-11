@@ -6,7 +6,7 @@ const Text  = ({...props }) => {
 
 
     return (
-        <Component> {props.label} </Component>
+        <Component {...props}> {props.text} </Component>
     )
      
 };
