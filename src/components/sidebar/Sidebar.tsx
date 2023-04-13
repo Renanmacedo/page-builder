@@ -2,9 +2,9 @@
 type SidebarProps = {
     children?: React.ReactNode
 } 
- function Sidebar({ children } : SidebarProps) {
+ function Sidebar({ children, ...props } : SidebarProps) {
     return (
-        <div className="h-full w-80  p-5">
+        <div {...props}>
             {children}
         </div>
     )

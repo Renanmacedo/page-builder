@@ -53,7 +53,7 @@ const TabListHeader = forwardRef<'div', TabListHeaderPropsCustom>((props, ref) =
     const { value }  = props;
     const isSelected = context?.defaultValue === value
     return (
-        <div className={`border-b border-mauve6 text-center w-full bg-white p-2 cursor-pointer ${isSelected ? 'border-b-purple-800' :''}`}>
+        <div className={`border-b-2 border-mauve6 text-center w-full bg-white p-2 cursor-pointer ${isSelected ? 'border-b-purple-800' :''}`}>
             <Button {...props} ref={ref}  onClick={() => { 
                 context.onSelection(value)
             }}  />
