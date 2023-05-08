@@ -1,0 +1,18 @@
+[
+    {
+        "type": "text",
+        "id": "componentText$1",
+        "style": {},
+        "className": {},
+        "children": "Texto"
+        
+    },
+    {
+        "type": "text",
+        "id": "componentContainer$1",
+        "style": {},
+        "className": {},
+        "children": "Container"
+        
+    }
+]
