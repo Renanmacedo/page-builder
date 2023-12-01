@@ -23,9 +23,6 @@ const useDrag = ({ onStart, onFinish, data }: DragProps) => {
     const onDragEnd = () => {
         setIsDragging(false);
     }
-    
-    
-
     useEffect(() => {
         if(dragRef.current) {
             dragRef.current.setAttribute('draggable', "true");
